@@ -1,0 +1,14 @@
+{
+  "name": "html5-project",
+  "version": "0.1.0",
+  "description": "HTML5 project template using npm, bower, and gulp.",
+  "author": "John Mendonca",
+  "repository": "https://github.com/johnmendonca/html5-project",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.12.2",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^3.0.0"
+  }
+}
