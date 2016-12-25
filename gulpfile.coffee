@@ -1,6 +1,9 @@
 gulp = require 'gulp'
 sass = require 'gulp-sass'
 connect = require 'gulp-connect'
+concat = require 'gulp-concat'
+uglify = require 'gulp-uglify'
+bower_files = require 'main-bower-files'
 
 src   = './src/'
 build = './build/'
@@ -12,6 +15,20 @@ gulp.task 'server', ->
   connect.server
     root: build,
     livereload: true
+
+gulp.task 'ie8_js', ->
+  gulp.src bower_files
+      filter: ["**/*respond*", "**/*shiv*"]
+    .pipe concat "ie8.js"
+    .pipe uglify()
+    .pipe gulp.dest("#{build}js")
+
+gulp.task 'vendor_js', ->
+  gulp.src bower_files
+      filter: "**/!(*respond*|*shiv*).js"
+    .pipe concat "vendor.js"
+    .pipe uglify()
+    .pipe gulp.dest("#{build}js")
 
 gulp.task 'sass', ->
   gulp.src sass_src
@@ -28,6 +45,6 @@ gulp.task 'watch', ->
   gulp.watch sass_src, ['sass']
   gulp.watch html_src, ['html']
 
-gulp.task 'build', ['html', 'sass']
+gulp.task 'build', ['ie8_js', 'vendor_js', 'sass', 'html']
 gulp.task 'default', ['build', 'server', 'watch']
 
