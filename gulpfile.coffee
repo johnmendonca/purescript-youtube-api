@@ -32,7 +32,11 @@ gulp.task 'vendor_js', ->
 
 gulp.task 'sass', ->
   gulp.src sass_src
-    .pipe sass().on('error', sass.logError)
+    .pipe sass(
+      style: 'compressed',
+      includePaths: [
+        './bower_components/normalize-scss']
+      ).on('error', sass.logError)
     .pipe gulp.dest("#{build}css")
     .pipe connect.reload()
 
