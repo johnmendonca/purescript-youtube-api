@@ -10,6 +10,7 @@ build = './build/'
 
 html_src = "#{src}*.html"
 sass_src = "#{src}sass/**/*.scss"
+asset_src = "#{src}assets/**/*"
 
 gulp.task 'server', ->
   connect.server
@@ -30,6 +31,11 @@ gulp.task 'vendor_js', ->
     .pipe uglify()
     .pipe gulp.dest("#{build}js")
 
+gulp.task 'assets', ->
+  gulp.src asset_src
+    .pipe gulp.dest("#{build}assets")
+    .pipe connect.reload()
+
 gulp.task 'sass', ->
   gulp.src sass_src
     .pipe sass(
@@ -46,9 +52,10 @@ gulp.task 'html', ->
     .pipe connect.reload()
 
 gulp.task 'watch', ->
+  gulp.watch asset_src, ['assets']
   gulp.watch sass_src, ['sass']
   gulp.watch html_src, ['html']
 
-gulp.task 'build', ['ie8_js', 'vendor_js', 'sass', 'html']
+gulp.task 'build', ['ie8_js', 'vendor_js', 'assets', 'sass', 'html']
 gulp.task 'default', ['build', 'server', 'watch']
 
