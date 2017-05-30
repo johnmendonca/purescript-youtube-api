@@ -17,6 +17,16 @@
   "dependencies": {
     "html5shiv": "^3.7.3",
     "respond": "^1.4.2",
-    "normalize-scss": "^3.0.3"
+    "normalize-scss": "^3.0.3",
+    "purescript-console": "^3.0.0",
+    "purescript-form-urlencoded": "^3.0.0",
+    "purescript-affjax": "^4.0.0",
+    "purescript-generics-rep": "^5.0.0",
+    "purescript-foreign-generic": "^4.1.0",
+    "purescript-transformers": "^3.1.0",
+    "purescript-foreign": "^4.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^3.0.0"
   }
 }

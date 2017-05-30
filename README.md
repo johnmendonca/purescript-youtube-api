@@ -1,8 +1,5 @@
-## html5-project
+## purescript-youtube-api
 
-A project starter template including:
+Code to hit the youtube browser api.  It does exactly one thing right now: search a youtube channel for any live videos.  Demonstrates how you would parse a specific json response format using PureScript.
 
- * gulp using coffeescript
- * libsass
- * browser livereload
-
+This currently uses jwplayer so you would need to add a license key to the html. 
